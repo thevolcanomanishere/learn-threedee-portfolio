@@ -2,6 +2,10 @@ import './style.css';
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import spaceImage from './assets/space.jpg';
+import alexImage from './assets/Alex.jpeg';
+import moonImage from './assets/moon.jpeg';
+import moonNormalMap from './assets/normal.jpeg';
 
 const scene = new THREE.Scene();
 
@@ -47,10 +51,10 @@ const addStar = () => {
   // @ts-ignore
 Array(400).fill().forEach(addStar);
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load(spaceImage);
 scene.background = spaceTexture;
 
-const alexTexture = new THREE.TextureLoader().load('Alex.jpeg');
+const alexTexture = new THREE.TextureLoader().load(alexImage);
 const alex = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial({ map: alexTexture})
@@ -58,8 +62,8 @@ const alex = new THREE.Mesh(
 
 scene.add(alex);
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpeg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpeg');
+const moonTexture = new THREE.TextureLoader().load(moonImage);
+const normalTexture = new THREE.TextureLoader().load(moonNormalMap);
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({ 
@@ -70,7 +74,7 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 30;
+moon.position.z = 10;
 moon.position.setX(-10);
 
 alex.position.z = -5;
